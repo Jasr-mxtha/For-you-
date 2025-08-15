@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <title>Love Animation</title>
+  <script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+  <style>
+    body {
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      font-size: 80px;
+    }
+  </style>
+</head>
+<body>
+  ❤️
+  <script>
+    const crtLoveTl = () => {
+      const move = 1000;
+      const heart = document.body;
+
+      return new mojs.Timeline().add([
+        new mojs.Tween({
+          duration: move,
+          onUpdate: (p) => {
+            heart.style.transform = scale(${1 + 0.5 * p});
+          },
+          onComplete: () => {
+            heart.style.opacity = 0;
+            console.log("Boom!");
+          }
+        })
+      ]);
+    };
+
+    const tl = crtLoveTl();
+    tl.play();
+  </script>
+</body>
+</html>
